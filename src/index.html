@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Girls' Chat</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css"
+    />
+    <link rel="stylesheet" href="styles.scss" />
+    <script type="module" src="app.ts"></script>
+  </head>
+  <body>
+    <main x-data="chat">
+      <div class="start-screen" x-show="chatting === false">
+        <div>
+          <h1>Welcome to Girls' Chat</h1>
+          <div x-show="connected === false" class="field">
+            <div class="field-inner">
+              <label for="ownId">Enter your desired username</label>
+              <input x-model="ownId" id="ownId" name="ownId" type="text" />
+            </div>
+            <button @click="connect">Connect</button>
+          </div>
+
+          <div x-show="connected === true" class="connected">
+            <p>✅ Connected as <span x-text="ownId"></span></p>
+          </div>
+
+          <div class="field">
+            <div class="field-inner">
+              <label for="friendId">Enter your friend's username</label>
+              <input
+                x-model="friendId"
+                id="friendId"
+                name="friendId"
+                type="text"
+              />
+            </div>
+            <button @click="chat">Chat</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" x-show="chatting === true">
+        <header>
+          <h1>Girls' Chat</h1>
+        </header>
+
+        <div class="messages">
+          <template x-for="message in messages">
+            <!-- <div class="message-outer message-sent">
+              <div class="message-inner">This is a sent message.</div>
+            </div> -->
+            <div
+              class="message-outer"
+              :class="message.from === 'own' ? 'message-sent' : 'message-received'"
+            >
+              <div class="message-inner" x-text="message.text"></div>
+            </div>
+          </template>
+        </div>
+
+        <div class="bottom-bar">
+          <input x-model="messageToSend" />
+          <button @click="send">Send</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

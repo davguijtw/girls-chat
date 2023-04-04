@@ -1,0 +1,21 @@
+{
+  "name": "girls-chat",
+  "version": "1.0.0",
+  "source": "src/index.html",
+  "scripts": {
+    "dev": "parcel"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.3",
+    "@types/alpinejs": "^3.7.1",
+    "parcel": "^2.8.3"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "dependencies": {
+    "alpinejs": "^3.12.0",
+    "peerjs": "^1.4.7"
+  }
+}

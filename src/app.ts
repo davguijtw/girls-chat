@@ -13,7 +13,11 @@ Alpine.data("chat", () => ({
   messageToSend: "",
 
   connect() {
-    peer = new Peer(this.ownId, { debug: 1 });
+    peer = new Peer(this.ownId, { 
+      debug: 1,
+      host: 'url goes here',
+      secure: true
+    });
     peer.on("open", () => {
       this.connected = true;
       peer.on("connection", (connection) => {
